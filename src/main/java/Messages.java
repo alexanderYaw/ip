@@ -1,18 +1,22 @@
 // Store all standard messages used in Malenia
 
 public class Messages {
-    public static final String GREETING_MSG = "_________________________________\n" +
+    public static String STANDARD_BAR() {
+        return "_________________________________\n";
+    }
+
+    public static final String GREETING_MSG = STANDARD_BAR() +
                       "Hello! I'm Malenia\n" +
                       "What can I do for you?\n" +
-                      "_________________________________\n";
+                      STANDARD_BAR();
 
-    public static final String GOODBYE_MSG = "_________________________________\n" +
+    public static final String GOODBYE_MSG = STANDARD_BAR() +
                       "Bye. Hope to see you again soon!\n" +
-                      "_________________________________";
+                      STANDARD_BAR();
 
-    public static String echoTemplate(String task) {
-        return "_________________________________\n" +
-                       task + "\n" +
-                      "_________________________________";
+    public static String ADD_RESPONSE(String task) {
+        return STANDARD_BAR() +
+                       "added: " + task + "\n" +
+                      STANDARD_BAR();
     }
 }
