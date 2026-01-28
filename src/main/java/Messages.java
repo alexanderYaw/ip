@@ -14,9 +14,15 @@ public class Messages {
                       "Bye. Hope to see you again soon!\n" +
                       STANDARD_BAR();
 
+    // Echo user entry when adding to task list
     public static String ADD_RESPONSE(String task) {
         return STANDARD_BAR() +
                        "added: " + task + "\n" +
                       STANDARD_BAR();
+    }
+
+    // Print task with its marked status
+    public static String PRINT_TASK(Task task) {
+        return task.isMarked() ? "[X] " + task.getName() : "[ ] " + task.getName();
     }
 }
