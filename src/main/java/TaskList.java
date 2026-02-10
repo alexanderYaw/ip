@@ -3,20 +3,22 @@ import java.util.Arrays;
 public class TaskList {
     private Task[] list;
     private int numOfItems;
+    private static final int MAX_TASKS = 100;
 
     // Create a Task List with a maximum of 100 items
     public TaskList() {
-        list = new Task[100];
+        list = new Task[MAX_TASKS];
         numOfItems = 0;
     }
 
-    // Add a new item to the end of the task list
-    public void add(String item) {
+    // Add a new Todo item to the end of the task list
+    public void add(Task task) {
         if (numOfItems == list.length) {
             System.out.println("Task list is full! Please remove some tasks before adding new ones.");
+            return;
         }
 
-        list[numOfItems] = new Task(item);
+        list[numOfItems] = task;
         numOfItems++;
     }
 
@@ -52,20 +54,20 @@ public class TaskList {
     // Print all items in the task list
     public void printList() {
         if (numOfItems == 0) {
-            System.out.println("The task list is empty.");
+            Messages.wrapWithBars("Your task list is empty!");
             return;
         }
 
-        System.out.println(Messages.STANDARD_BAR());
+        System.out.println(Messages.STANDARD_BAR);
         System.out.println("Here are the tasks in your list:");
         boolean markedStatus;
         String taskName;
         for (int i = 0; i < numOfItems; i++) {
             markedStatus = list[i].isMarked();
             taskName = list[i].getName();
-            System.out.println((i + 1) + "." + Messages.PRINT_TASK(list[i]));
+            System.out.println((i + 1) + "." + list[i]);
         }
 
-        System.out.println(Messages.STANDARD_BAR());
+        System.out.println(Messages.STANDARD_BAR);
     }
 }

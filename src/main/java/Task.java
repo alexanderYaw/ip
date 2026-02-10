@@ -1,10 +1,10 @@
 public class Task {
     private String name;
-    private boolean marked;
+    private boolean isMarked;
 
     public Task(String name) {
         this.name = name;
-        this.marked = false;
+        this.isMarked = false;
     }
 
     public String getName() {
@@ -12,10 +12,15 @@ public class Task {
     }
 
     public boolean isMarked() {
-        return marked;
+        return isMarked;
     }
 
     public void setMarkedStatus(boolean status) {
-        this.marked = status;
+        this.isMarked = status;
+    }
+
+    @Override
+    public String toString() {
+        return (isMarked ? "[X] " : "[ ] ") + name;
     }
 }
