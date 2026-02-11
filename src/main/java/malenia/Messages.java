@@ -1,6 +1,8 @@
 /**
 Store all standard messages used in Malenia
 */
+package malenia;
+import malenia.task.*;
 
 public class Messages {
     public static final String STANDARD_BAR = "_________________________________\n";

@@ -1,3 +1,5 @@
+package malenia;
+
 public class MaleniaExceptions extends Exception {
     public MaleniaExceptions(String message) {
         super(message);

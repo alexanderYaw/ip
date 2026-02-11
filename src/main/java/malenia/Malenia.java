@@ -1,4 +1,6 @@
+package malenia;
 import java.util.Scanner;
+import malenia.task.*;
 
 public class Malenia {
     public static void main(String[] args) {
