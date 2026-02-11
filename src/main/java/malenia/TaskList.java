@@ -1,4 +1,5 @@
-import java.util.Arrays;
+package malenia;
+import malenia.task.*;
 
 public class TaskList {
     private Task[] list;
@@ -60,11 +61,7 @@ public class TaskList {
 
         System.out.println(Messages.STANDARD_BAR);
         System.out.println("Here are the tasks in your list:");
-        boolean markedStatus;
-        String taskName;
         for (int i = 0; i < numOfItems; i++) {
-            markedStatus = list[i].isMarked();
-            taskName = list[i].getName();
             System.out.println((i + 1) + "." + list[i]);
         }
 

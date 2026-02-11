@@ -1,6 +1,7 @@
 /**
 Check if what the user entered is a valid command or contains invalid parameters
 */
+package malenia;
 import java.util.Arrays;
 
 public class CommandCheck {

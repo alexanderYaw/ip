@@ -1,3 +1,5 @@
+package malenia.task;
+
 public class Deadline extends Task {
     private String dueDate;
 

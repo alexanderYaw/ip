@@ -1,3 +1,5 @@
+package malenia.task;
+
 public class Event extends Task {
     private String eventStartTime;
     private String eventEndTime;
