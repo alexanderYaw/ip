@@ -52,7 +52,7 @@ public class Malenia {
                     String taskName = userInput.substring(5);
                     Todo todoTask = new Todo(taskName);
                     taskList.add(todoTask);
-                    Messages.addTaskResponse(todoTask);
+                    Messages.addTaskResponse(todoTask, taskList);
                     break;
 
                 case "deadline":
@@ -65,7 +65,7 @@ public class Malenia {
                     String dueBy = deadlineParts[1];
                     Deadline deadlineTask = new Deadline(deadlineName, dueBy);
                     taskList.add(deadlineTask);
-                    Messages.addTaskResponse(deadlineTask);
+                    Messages.addTaskResponse(deadlineTask, taskList);
                     break;
 
                 case "event":
@@ -79,7 +79,18 @@ public class Malenia {
                     String eventEndTime = eventParts[2];
                     Event eventTask = new Event(eventName, eventStartTime, eventEndTime);
                     taskList.add(eventTask);
-                    Messages.addTaskResponse(eventTask);
+                    Messages.addTaskResponse(eventTask, taskList);
+                    break;
+                
+                case "delete":
+                    if (!CommandCheck.isDelete(parsedInput, taskList)) {
+                        break;
+                    }
+
+                    int indexToDelete = Integer.parseInt(parsedInput[1]) - 1;
+                    Task deletedTask = taskList.getTask(indexToDelete);
+                    taskList.remove(indexToDelete);
+                    Messages.deleteTaskResponse(deletedTask, taskList);
                     break;
 
                 default:
