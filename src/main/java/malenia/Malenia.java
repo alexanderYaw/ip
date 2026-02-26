@@ -96,6 +96,7 @@ public class Malenia {
             }
         }
 
+        Storage.save(taskList);
         System.out.println(Messages.GOODBYE_MSG);
         scanner.close();
     }
