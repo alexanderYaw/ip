@@ -1,12 +1,21 @@
 package malenia;
+import java.io.IOException;
 import java.util.Scanner;
 import malenia.task.*;
 
 public class Malenia {
     public static void main(String[] args) {
-        TaskList taskList = new TaskList();
-        System.out.println(Messages.GREETINGS_MSG);
+        TaskList taskList;
+        try {
+            taskList = Storage.load();
+        }
+        
+        catch (IOException e) {
+            Messages.wrapWithBars("Failed to load saved tasks: " + e.getMessage());
+            taskList = new TaskList();
+        }
 
+        System.out.println(Messages.GREETINGS_MSG);
         Scanner scanner = new Scanner(System.in);
         String userInput;
         String[] parsedInput;
