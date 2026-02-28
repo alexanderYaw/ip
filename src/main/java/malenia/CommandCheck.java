@@ -65,21 +65,4 @@ public class CommandCheck {
             throw MaleniaExceptions.listInvalidParameterException();
         }
     }
-
-    public static boolean isDelete(String[] parsedInput, TaskList taskList) throws MaleniaExceptions {
-        if (parsedInput.length == 2 && parsedInput[1].matches("\\d+")) {
-            int indexToDelete = Integer.parseInt(parsedInput[1]);
-            if (indexToDelete > 0 && indexToDelete <= taskList.getNumOfItems()) {
-                return true;
-            }
-            
-            else {
-                throw MaleniaExceptions.taskIndexOutOfRangeException();
-            }
-        }
-        
-        else {
-            throw MaleniaExceptions.listInvalidParameterException();
-        }
-    }
 }

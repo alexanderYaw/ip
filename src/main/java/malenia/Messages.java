@@ -20,10 +20,9 @@ public class Messages {
         System.out.println(STANDARD_BAR);
     }
 
-    public static void addTaskResponse(Task task, TaskList taskList) {
+    public static void addTaskResponse(Task task) {
         System.out.println(STANDARD_BAR);
         System.out.println("Got it. I've added this task: " + task);
-        System.out.println("Now you have " + taskList.getNumOfItems() + " tasks in the list.");
         System.out.println(STANDARD_BAR);
     }
 
@@ -39,13 +38,5 @@ public class Messages {
                 System.out.println("OK, I've marked this task as not done yet:");
                 System.out.println(task);
                 System.out.println(STANDARD_BAR);
-    }
-
-    public static void deleteTaskResponse(Task task, TaskList taskList) {
-        System.out.println(STANDARD_BAR);
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(task);
-        System.out.println("Now you have " + taskList.getNumOfItems() + " tasks in the list.");
-        System.out.println(STANDARD_BAR);
     }
 }
