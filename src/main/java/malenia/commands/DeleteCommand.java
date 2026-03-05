@@ -1,7 +1,7 @@
 package malenia.commands;
 import malenia.TaskList;
 import malenia.task.Task;
-import malenia.Messages;
+import malenia.Ui;
 
 public class DeleteCommand extends Command {
     private int indexToDelete;
@@ -13,6 +13,6 @@ public class DeleteCommand extends Command {
     public void execute(TaskList taskList) {
         Task deletedTask = taskList.getTask(indexToDelete);
         taskList.remove(indexToDelete);
-        Messages.deleteTaskResponse(deletedTask, taskList);
+        Ui.deleteTaskResponse(deletedTask, taskList);
     }
 }

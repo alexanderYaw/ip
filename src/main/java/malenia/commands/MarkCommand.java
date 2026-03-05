@@ -1,6 +1,6 @@
 package malenia.commands;
 import malenia.TaskList;
-import malenia.Messages;
+import malenia.Ui;
 
 public class MarkCommand extends Command {
     private int indexToMark;
@@ -12,6 +12,6 @@ public class MarkCommand extends Command {
     @Override
     public void execute(TaskList taskList) {
         taskList.getTask(indexToMark).setMarkedStatus(true);
-        Messages.markedResponse(taskList.getTask(indexToMark));
+        Ui.markedResponse(taskList.getTask(indexToMark));
     }
 }

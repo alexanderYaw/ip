@@ -7,7 +7,13 @@ import java.nio.file.StandardOpenOption;
 import malenia.task.*;
 
 public class Storage {
-    public static String toDataString(Task task) {
+    private Path filePath;
+
+    public Storage(String filePath) {
+        this.filePath = Paths.get(filePath);
+    }
+
+    public String toDataString(Task task) {
         String formattedTask = task.toString();
         formattedTask = formattedTask.substring(1); // Remove the opening bracket "["
         formattedTask = formattedTask.replace("[ ]", "0 |");
@@ -27,8 +33,7 @@ public class Storage {
      * is returned; the caller can then operate on it. Any I/O errors are
      * propagated to the caller.
      */
-    public static TaskList load() throws IOException {
-        Path filePath = Paths.get(".", "data", "maleniaTaskList.txt");
+    public TaskList load() throws IOException {
         TaskList taskList = new TaskList();
 
         if (!Files.exists(filePath)) {
@@ -79,7 +84,7 @@ public class Storage {
         return taskList;
     }
 
-    public static void save(TaskList taskList) {
+    public void save(TaskList taskList) {
         Path dirPath = Paths.get(".", "data"); 
         Path filePath = Paths.get(".", "data", "maleniaTaskList.txt"); 
 

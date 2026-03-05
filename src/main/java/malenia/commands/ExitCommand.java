@@ -1,5 +1,5 @@
 package malenia.commands;
-import malenia.Messages;
+import malenia.Ui;
 import malenia.TaskList;
 
 public class ExitCommand extends Command {
@@ -8,7 +8,7 @@ public class ExitCommand extends Command {
     }
 
     public boolean isExit() {
-        System.out.println(Messages.GOODBYE_MSG);
+        System.out.println(Ui.GOODBYE_MSG);
         return true;
     }
 }

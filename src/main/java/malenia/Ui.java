@@ -2,9 +2,12 @@
 Store all standard messages used in Malenia
 */
 package malenia;
+import java.util.Scanner;
+
 import malenia.task.*;
 
-public class Messages {
+public class Ui {
+    private Scanner scanner;
     public static final String STANDARD_BAR = "_________________________________\n";
     public static final String GREETINGS_MSG = STANDARD_BAR +
                         "Hello! I'm Malenia\n" +
@@ -14,6 +17,18 @@ public class Messages {
                         "Bye. Hope to see you again soon!\n" + 
                         STANDARD_BAR;
 
+    public Ui() {
+        scanner = new Scanner(System.in);
+    }
+
+    public String readUserInput() {
+        return scanner.nextLine();
+    }
+    
+    public void closeScanner() {
+        scanner.close();
+    }
+                        
     public static void wrapWithBars(String message) {
         System.out.println(STANDARD_BAR);
         System.out.println(message);

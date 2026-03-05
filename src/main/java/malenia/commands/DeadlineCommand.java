@@ -1,6 +1,6 @@
 package malenia.commands;
 import malenia.TaskList;
-import malenia.Messages;
+import malenia.Ui;
 import malenia.task.Deadline;
 
 public class DeadlineCommand extends Command {
@@ -15,6 +15,6 @@ public class DeadlineCommand extends Command {
     public void execute(TaskList taskList) {
         Deadline deadlineTask = new Deadline(description, dueBy);
         taskList.add(deadlineTask);
-        Messages.addTaskResponse(deadlineTask, taskList);
+        Ui.addTaskResponse(deadlineTask, taskList);
     }
 }

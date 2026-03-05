@@ -1,6 +1,6 @@
 package malenia.commands;
 import malenia.TaskList;
-import malenia.Messages;
+import malenia.Ui;
 
 public class UnmarkCommand extends Command {
     private int indexToUnmark;
@@ -12,6 +12,6 @@ public class UnmarkCommand extends Command {
     @Override
     public void execute(TaskList taskList) {
         taskList.getTask(indexToUnmark).setMarkedStatus(false);
-        Messages.unmarkedResponse(taskList.getTask(indexToUnmark));
+        Ui.unmarkedResponse(taskList.getTask(indexToUnmark));
     }   
 }
