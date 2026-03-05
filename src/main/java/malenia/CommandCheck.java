@@ -13,6 +13,14 @@ public class CommandCheck {
         return true;
     }
 
+    public static boolean isBye(String[] parsedInput) {
+        if (parsedInput.length > 1) {
+            throw new IllegalArgumentException("The command does not take any parameters.");
+        }
+
+        return true;
+    }
+
     public static boolean isTodo(String[] parsedInput) throws MaleniaExceptions {
         if (parsedInput.length > 1) {
             return true;

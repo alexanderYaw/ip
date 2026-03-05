@@ -38,20 +38,4 @@ public class TaskList {
 
         return list.get(index);
     }
-
-    // Print all items in the task list
-    public void printList() {
-        if (list.size() == 0) {
-            Messages.wrapWithBars("Your task list is empty!");
-            return;
-        }
-
-        System.out.println(Messages.STANDARD_BAR);
-        System.out.println("Here are the tasks in your list:");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println((i + 1) + "." + list.get(i));
-        }
-
-        System.out.println(Messages.STANDARD_BAR);
-    }
 }

@@ -1,6 +1,6 @@
 package malenia.task;
 
-public class Task {
+public abstract class Task {
     private String name;
     private boolean isMarked;
 

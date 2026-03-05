@@ -1,7 +1,7 @@
 package malenia;
 import java.io.IOException;
 import java.util.Scanner;
-import malenia.task.*;
+import malenia.commands.*;
 
 public class Malenia {
     public static void main(String[] args) {
@@ -17,94 +17,14 @@ public class Malenia {
 
         System.out.println(Messages.GREETINGS_MSG);
         Scanner scanner = new Scanner(System.in);
+        boolean isExit = false;
         String userInput;
-        String[] parsedInput;
-        String command;
-        while (!(userInput = scanner.nextLine()).equals("bye")) {
-            parsedInput = userInput.split(" ");
-            command = parsedInput[0];
+        while (!isExit) {
             try {
-                switch (command) {
-                case "list":
-                    if (!CommandCheck.isList(parsedInput)) {
-                        break;
-                    }
-
-                    taskList.printList();
-                    break;
-
-                case "mark":
-                    if (!CommandCheck.isMarkUnmark(parsedInput, taskList)) {
-                        break;
-                    }
-
-                    int indexToMark = Integer.parseInt(parsedInput[1]) - 1;
-                    taskList.getTask(indexToMark).setMarkedStatus(true);
-                    Messages.markedResponse(taskList.getTask(indexToMark));
-                    break;
-
-                case "unmark":
-                    if (!CommandCheck.isMarkUnmark(parsedInput, taskList)) {
-                        break;
-                    }
-
-                    int indexToUnmark = Integer.parseInt(parsedInput[1]) - 1;
-                    taskList.getTask(indexToUnmark).setMarkedStatus(false);
-                    Messages.unmarkedResponse(taskList.getTask(indexToUnmark));
-                    break;
-
-                case "todo":
-                    if (!CommandCheck.isTodo(parsedInput)) {
-                        break;
-                    }
-
-                    String taskName = userInput.substring(5);
-                    Todo todoTask = new Todo(taskName);
-                    taskList.add(todoTask);
-                    Messages.addTaskResponse(todoTask, taskList);
-                    break;
-
-                case "deadline":
-                    if (!CommandCheck.isDeadline(parsedInput)) {
-                        break;
-                    }
-
-                    String[] deadlineParts = userInput.substring(9).split(" /by ");
-                    String deadlineName = deadlineParts[0];
-                    String dueBy = deadlineParts[1];
-                    Deadline deadlineTask = new Deadline(deadlineName, dueBy);
-                    taskList.add(deadlineTask);
-                    Messages.addTaskResponse(deadlineTask, taskList);
-                    break;
-
-                case "event":
-                    if (!CommandCheck.isEvent(parsedInput)) {
-                        break;
-                    }
-
-                    String[] eventParts = userInput.substring(6).split(" /from | /to ");
-                    String eventName = eventParts[0];
-                    String eventStartTime = eventParts[1];
-                    String eventEndTime = eventParts[2];
-                    Event eventTask = new Event(eventName, eventStartTime, eventEndTime);
-                    taskList.add(eventTask);
-                    Messages.addTaskResponse(eventTask, taskList);
-                    break;
-                
-                case "delete":
-                    if (!CommandCheck.isDelete(parsedInput, taskList)) {
-                        break;
-                    }
-
-                    int indexToDelete = Integer.parseInt(parsedInput[1]) - 1;
-                    Task deletedTask = taskList.getTask(indexToDelete);
-                    taskList.remove(indexToDelete);
-                    Messages.deleteTaskResponse(deletedTask, taskList);
-                    break;
-
-                default:
-                    throw MaleniaExceptions.invalidCommandException();
-                }
+                userInput = scanner.nextLine();
+                Command c = Parser.parse(userInput, taskList);
+                c.execute(taskList);
+                isExit = c.isExit();
             }
 
             catch (MaleniaExceptions e) {
@@ -117,7 +37,6 @@ public class Malenia {
         }
 
         Storage.save(taskList);
-        System.out.println(Messages.GOODBYE_MSG);
         scanner.close();
     }
 }
