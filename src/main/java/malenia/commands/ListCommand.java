@@ -14,9 +14,10 @@ public class ListCommand extends Command {
         else {
             Ui.wrapWithBars("Here are the tasks in your list:");
             for (int i = 0; i < taskList.getNumOfItems(); i++) {
-            System.out.println((i + 1) + "." + taskList.getTask(i));
-            System.out.println(Ui.STANDARD_BAR);
+                System.out.println((i + 1) + "." + taskList.getTask(i));
             }
+
+            System.out.println(Ui.STANDARD_BAR);
         }
     }
 }
