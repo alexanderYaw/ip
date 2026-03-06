@@ -2,6 +2,9 @@ package malenia.commands;
 import malenia.TaskList;
 import malenia.Ui;
 
+/**
+ * Represents a command to unmark a task as not done in the Malenia application.
+ */
 public class UnmarkCommand extends Command {
     private int indexToUnmark;
 

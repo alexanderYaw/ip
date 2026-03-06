@@ -1,5 +1,10 @@
 package malenia;
 
+/**
+ * Exception class specific to Malenia application.
+ * It defines various custom exceptions that can be thrown when the user input is invalid or
+ * when certain error conditions occur during the execution of commands.
+ */
 public class MaleniaExceptions extends Exception {
     public MaleniaExceptions(String message) {
         super(message);

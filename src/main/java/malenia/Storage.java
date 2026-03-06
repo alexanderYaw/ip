@@ -13,6 +13,12 @@ public class Storage {
         this.filePath = Paths.get(filePath);
     }
 
+    /**
+     * Formats a Task object into a string representation suitable for saving to a file.
+     * 
+     * @param task
+     * @return A string representing the task in the file format.
+     */
     public String toDataString(Task task) {
         String formattedTask = task.toString();
         formattedTask = formattedTask.substring(1); // Remove the opening bracket "["
@@ -28,16 +34,22 @@ public class Storage {
     }
 
     /**
-     * Reads the task file (if it exists) and converts each line back into a
-     * Task object, which is added to a newly created TaskList. The task list
-     * is returned; the caller can then operate on it. Any I/O errors are
-     * propagated to the caller.
+     * Loads the task list from the file specified by filePath.
+     * If the file does not exist, an empty task list is returned.
+     * Each line in the file is expected to be in the format (e.g.):
+     * T | 0 | Task description
+     * D | 1 | Task description | Due date
+     * E | 0 | Task description | Start date | End date
+     * The first part indicates the type of task (T for Todo, D for Deadline, E for Event),
+     * the second part indicates whether the task is marked (1) or not (0),
+     * and the remaining parts contain the task description and relevant dates.
+     * 
+     * @return A TaskList object containing the tasks loaded from the file.
      */
     public TaskList load() throws IOException {
         TaskList taskList = new TaskList();
 
         if (!Files.exists(filePath)) {
-            // no file yet, return empty list
             return taskList;
         }
 
@@ -46,7 +58,7 @@ public class Storage {
                 continue;
             }
 
-            // split on the pipe separators, trim whitespace
+            // split the pipe separators, trim whitespace
             String[] parts = line.split("\\|");
             for (int i = 0; i < parts.length; i++) {
                 parts[i] = parts[i].trim();
@@ -84,6 +96,11 @@ public class Storage {
         return taskList;
     }
 
+    /**
+     * Saves the task list to the file specified by filePath.
+     * 
+     * @param taskList
+     */
     public void save(TaskList taskList) {
         Path dirPath = Paths.get(".", "data"); 
         Path filePath = Paths.get(".", "data", "maleniaTaskList.txt"); 
