@@ -1,11 +1,14 @@
-/**
-Store all standard messages used in Malenia
-*/
 package malenia;
 import java.util.Scanner;
-
 import malenia.task.*;
 
+/**
+ * The Ui class is responsible for handling user interactions, including reading user input and displaying messages.
+ * It provides methods to read user input, display greetings and goodbye messages, and wrap messages with
+ * standard bars for better readability.
+ * It also includes methods to display responses for adding, marking, unmarking,
+ * and deleting tasks, which include the relevant task information and the current number of tasks in the list.
+ */
 public class Ui {
     private Scanner scanner;
     public static final String STANDARD_BAR = "_________________________________\n";

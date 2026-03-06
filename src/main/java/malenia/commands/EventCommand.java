@@ -3,6 +3,11 @@ import malenia.task.Event;
 import malenia.TaskList;
 import malenia.Ui;
 
+/**
+ * The EventCommand class represents a command to add an event task to the task list.
+ * It takes the description, start time and end time of the event as parameters and
+ * creates an Event task which is added to the task list when executed.
+ */
 public class EventCommand extends Command {
     private String description;
     private String from;

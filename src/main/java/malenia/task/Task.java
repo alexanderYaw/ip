@@ -1,5 +1,8 @@
 package malenia.task;
 
+/**
+ * The Task class represents a generic task. It is an abstract class that provides common functionality for all types of tasks.
+ */
 public abstract class Task {
     private String name;
     private boolean isMarked;

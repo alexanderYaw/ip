@@ -2,6 +2,9 @@ package malenia.commands;
 import malenia.TaskList;
 import malenia.Ui;
 
+/**
+ * The ListCommand class represents a command to list all the tasks in the task list.
+ */
 public class ListCommand extends Command {
     public void execute(TaskList taskList) {
         if (taskList.getNumOfItems() == 0) {

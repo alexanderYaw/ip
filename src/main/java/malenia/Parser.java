@@ -1,12 +1,17 @@
 package malenia;
 import malenia.commands.*;
 
+/**
+ * The Parser class is responsible for parsing user input and creating the appropriate Command objects based on the input.
+ * It checks the validity of the commands and their parameters using the CommandCheck class
+ * and throws MaleniaExceptions if any issues are found.
+ */
 public class Parser {
     public static Command parse(String input, TaskList taskList) throws MaleniaExceptions {
         String[] parsedInput = input.split(" ", 2);
         String command = parsedInput[0].toLowerCase();
         String parameters = (parsedInput.length > 1) ? parsedInput[1] : "";
-        parsedInput = input.split(" ");
+        parsedInput = input.split(" "); // parsedInput is redefined to be used for command checks that require the full input
             switch (command) {
             case "list":
                 CommandCheck.checkList(parsedInput);
@@ -49,6 +54,12 @@ public class Parser {
             }
     }
 
+    /**
+     * Parses the parameters of a deadline command and creates a DeadlineCommand object.
+     * 
+     * @param parameters
+     * @return A DeadlineCommand object containing the description and due date of the deadline.
+     */
     private static Command parseDeadlineCommand(String parameters) {
         String[] deadlineParts = parameters.split(" /by ");
         String description = deadlineParts[0];
@@ -56,6 +67,12 @@ public class Parser {
         return new DeadlineCommand(description, dueBy);
     }
 
+    /**
+     * Parses the parameters of an event command and creates an EventCommand object.
+     * 
+     * @param parameters
+     * @return An EventCommand object containing the description, start time, and end time of the event.
+     */
     private static Command parseEventCommand(String parameters) {
         String[] eventParts = parameters.split(" /from | /to ");
         String description = eventParts[0];

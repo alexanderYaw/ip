@@ -2,6 +2,9 @@ package malenia.commands;
 import malenia.TaskList;
 import malenia.Ui;
 
+/**
+ * The MarkCommand class represents a command to mark a task as "done" in the task list.
+ */
 public class MarkCommand extends Command {
     private int indexToMark;
 

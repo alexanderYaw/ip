@@ -1,9 +1,11 @@
-/**
-Check if what the user entered is a valid command or contains invalid parameters
-*/
 package malenia;
 import java.util.Arrays;
 
+/**
+ * Checks the validity of user input for various commands and throws appropriate exceptions if the input is invalid.
+ * This class is used by the Parser class to ensure that the user input for each command adheres
+ * to the expected format and contains the necessary paremeters before the commands are actually executed.
+ */
 public class CommandCheck {
     public static void checkList(String[] parsedInput) {
         if (parsedInput.length > 1) {

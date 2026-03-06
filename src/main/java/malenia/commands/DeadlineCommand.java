@@ -3,6 +3,9 @@ import malenia.TaskList;
 import malenia.Ui;
 import malenia.task.Deadline;
 
+/**
+ * The DeadlineCommand class represents a command to add a deadline task to the task list.
+ */
 public class DeadlineCommand extends Command {
     private String description;
     private String dueBy;

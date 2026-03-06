@@ -3,6 +3,9 @@ import malenia.TaskList;
 import malenia.Ui;
 import malenia.task.Todo;
 
+/**
+ * The TodoCommand class represents a command to add a "Todo" task to the task list.
+ */
 public class TodoCommand extends Command {
     private String description;
 
