@@ -6,37 +6,42 @@ public class Parser {
         String[] parsedInput = input.split(" ", 2);
         String command = parsedInput[0].toLowerCase();
         String parameters = (parsedInput.length > 1) ? parsedInput[1] : "";
+        parsedInput = input.split(" ");
             switch (command) {
             case "list":
-                CommandCheck.isList(parsedInput);
+                CommandCheck.checkList(parsedInput);
                 return new ListCommand();
                 
             case "mark":
-                CommandCheck.isMarkUnmark(parsedInput, taskList);
+                CommandCheck.checkMarkUnmark(parsedInput, taskList);
                 return new MarkCommand(parameters);
 
             case "unmark":
-                CommandCheck.isMarkUnmark(parsedInput, taskList);
+                CommandCheck.checkMarkUnmark(parsedInput, taskList);
                 return new UnmarkCommand(parameters);
 
             case "todo":
-                CommandCheck.isTodo(parsedInput);
+                CommandCheck.checkTodo(parsedInput);
                 return new TodoCommand(parameters);
 
             case "deadline":
-                CommandCheck.isDeadline(input.split(" "));
+                CommandCheck.checkDeadline(parsedInput);
                 return parseDeadlineCommand(parameters);
 
             case "event":
-                CommandCheck.isEvent(input.split(" "));
+                CommandCheck.checkEvent(parsedInput);
                 return parseEventCommand(parameters);
+
+            case "find":
+                CommandCheck.checkFind(parsedInput);
+                return new FindCommand(parameters);
             
             case "delete":
-                CommandCheck.isDelete(parsedInput, taskList);                 
+                CommandCheck.checkDelete(parsedInput, taskList);                 
                 return new DeleteCommand(parameters);
 
             case "bye":
-                CommandCheck.isBye(parsedInput);
+                CommandCheck.checkBye(parsedInput);
                 return new ExitCommand();
 
             default:
