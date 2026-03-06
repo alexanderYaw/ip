@@ -10,7 +10,7 @@ import java.io.IOException;
 import malenia.commands.*;
 
 /**
- * Main class for Malenia application.
+ * Main class for Malenia application
  */
 public class Malenia {
     private Storage storage;
